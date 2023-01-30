@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-let loginuser = async (UserName,Password) => {
+let registeruser = async (UserName,Password) => {
     try {
-      await fetch("https://ubade.pythonanywhere.com/api/login", {
+      await fetch("https://ubade.pythonanywhere.com/api/register", {
         method: "POST",
         body: JSON.stringify({
           username: UserName,
+          email: "none@mail.com",
           password: Password,
         }),
         headers: {
@@ -21,7 +22,7 @@ let loginuser = async (UserName,Password) => {
     }
   };
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props){
       super(props);
       this.state = {username: '', password: ''};
@@ -41,7 +42,7 @@ class Login extends React.Component {
       }
 
     handleSubmit(event) {
-        loginuser(this.state.username,this.state.password);
+        registeruser(this.state.username,this.state.password);
         event.preventDefault();
         document.getElementById("redirectToHomepage").click()
       }
@@ -58,9 +59,11 @@ class Login extends React.Component {
           <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit" />
-        <Link to="/" id='redirectToHomepage'/>
+        <Link to="/" id='redirectToHomepage'>
+        <button>Cancel</button>
+        </Link>
       </form>
     )};
   };
 
-export default Login;
+export default Register;

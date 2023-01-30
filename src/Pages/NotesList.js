@@ -1,12 +1,14 @@
 import React from 'react';
 import Note from "../Components/Note";
+import { Link, Navigate } from 'react-router-dom'
 
 class NotesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             items: [],
-            DataisLoaded: false
+            DataisLoaded: false,
+            Unauthorized: false
         };
     };
 
@@ -19,7 +21,13 @@ class NotesList extends React.Component {
             "Content-Type": "application/json",
         },
         })
-        
+        .then((response) => {
+            if (response.status === 401) {
+                this.setState({Unauthorized: true})
+            } else if (response.status === 200) {
+                return response
+            }
+        })
         .then((response) => response.json())
         .then((json) => {
             this.setState({
@@ -30,11 +38,14 @@ class NotesList extends React.Component {
     }
 
     render () {
-        const { DataisLoaded, items } = this.state;
-        if (!DataisLoaded) return <> <h1> Loading.... </h1> </> ;
+        const { DataisLoaded, items, Unauthorized } = this.state;
+        if (Unauthorized) return <Navigate to="/login" replace={true} />
+        if (!DataisLoaded) return <> <h1> Loading.... </h1> </>;
         return (
         <div className = "App">
-            <button href="">Add new note</button>
+            <Link to="/notes/add">
+            <button>Add note</button>
+            </Link>
             <h1> Notes </h1>  {items.map((item) => ( 
                 <Note key={item.id} title={item.title} body={item.body} color={item.color}/>
                 ))

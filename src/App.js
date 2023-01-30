@@ -1,53 +1,48 @@
 import './App.css';
 import {
-  createHashRouter,
+  createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
-
+import Homepage from './Pages/Homepage';
 import LoginPage from './Pages/LoginPage';
+import Register from './Components/Register';
 import NotesList from './Pages/NotesList';
+import AddNotePage from './Pages/AddNotePage';
 
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: (<Outlet />),
     children: [
       {
         path: "/",
-        element: <>
-        <h1>hello</h1>
-        <Link to="/login">
-            <a>Login</a>
-        </Link>
-        <br/>
-        <Link to="/notes">
-            <a>Notes</a>
-        </Link>
-        </>,
+        element: <Homepage/>,
       },
       {
         path: "/login",
         element: <LoginPage/>,
       },
       {
+        path: "/register",
+        element: <Register/>,
+      },
+      {
         path: "/notes",
         element: <NotesList/>,
-        children: [
-          {
-            path: "/notes/add",
-            element: <LoginPage/>,
-          },
-        ]
+      },
+      {
+        path: "/notes/add",
+        element: <AddNotePage/>,
       },
     ],
   },
-]);
+],{basename: "/react",});
 function App() {
   return (
-    <div>
+    <div className="App">
     <RouterProvider router={router} />
     </div>
   );
