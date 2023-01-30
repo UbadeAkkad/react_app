@@ -1,22 +1,32 @@
 import './App.css';
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
+
 
 import LoginPage from './Pages/LoginPage';
 import NotesList from './Pages/NotesList';
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (<Outlet />),
     children: [
       {
         path: "/",
-        element: <h1>hello shit head</h1>,
+        element: <>
+        <h1>hello</h1>
+        <Link to="/login">
+            <a>Login</a>
+        </Link>
+        <br/>
+        <Link to="/notes">
+            <a>Notes</a>
+        </Link>
+        </>,
       },
       {
         path: "/login",
