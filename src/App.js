@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <NotesList/>,
         children: [
           {
-            path: "/add",
+            path: "/notes/add",
             element: <LoginPage/>,
           },
         ]
