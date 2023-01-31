@@ -7,7 +7,6 @@ let registeruser = async (UserName,Password) => {
         method: "POST",
         body: JSON.stringify({
           username: UserName,
-          email: "none@mail.com",
           password: Password,
         }),
         headers: {
