@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom'
+import Logout from '../Components/Logout';
 
 function Homepage() {
     return(
         <>
         <h1>Hello</h1>
         <Link to="/register">
-            <a>Register</a>
+            <span>Register</span>
         </Link>
         <br/>
         <Link to="/login">
-            <a>Login</a>
+            <span>Login</span>
         </Link>
         <br/>
         <Link to="/notes">
-            <a>Notes</a>
+            <span>Notes</span>
         </Link>
+        <br/>
+        <Logout/>
         </>
     );
 };

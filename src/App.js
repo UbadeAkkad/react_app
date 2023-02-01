@@ -7,9 +7,10 @@ import { Outlet } from 'react-router-dom'
 
 import Homepage from './Pages/Homepage';
 import LoginPage from './Pages/LoginPage';
-import Register from './Components/Register';
+import RegisterPage from './Pages/RegisterPage';
 import NotesList from './Pages/NotesList';
 import AddNotePage from './Pages/AddNotePage';
+import ConvertGuestPage from './Pages/ConvertGuestPage';
 
 
 const router = createBrowserRouter([
@@ -26,8 +27,12 @@ const router = createBrowserRouter([
         element: <LoginPage/>,
       },
       {
+        path: "/convertguest",
+        element: <ConvertGuestPage/>,
+      },
+      {
         path: "/register",
-        element: <Register/>,
+        element: <RegisterPage/>,
       },
       {
         path: "/notes",
