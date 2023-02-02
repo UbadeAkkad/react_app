@@ -43,11 +43,12 @@ class NotesList extends React.Component {
         if (!DataisLoaded) return <> <h1> Loading.... </h1> </>;
         return (
         <div className = "App">
+            <h1> Notes </h1>
             <Link to="/notes/add">
             <button>Add note</button>
             </Link>
-            <h1> Notes </h1>  {items.map((item) => ( 
-                <Note key={item.id} title={item.title} body={item.body} color={item.color}/>
+            {items.map((item) => ( 
+                <Note key={item.id} title={item.title} body={item.body} color={item.color} id={item.id}/>
                 ))
             }
         </div>);

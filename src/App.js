@@ -8,9 +8,10 @@ import { Outlet } from 'react-router-dom'
 import Homepage from './Pages/Homepage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
-import NotesList from './Pages/NotesList';
+import NotesList from './Pages/NotesListPage';
 import AddNotePage from './Pages/AddNotePage';
 import ConvertGuestPage from './Pages/ConvertGuestPage';
+import UpdateNotePage from './Pages/UpdateNotePage';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/notes/add",
         element: <AddNotePage/>,
+      },
+      {
+        path: "/notes/edit",
+        element: <UpdateNotePage/>,
       },
     ],
   },
