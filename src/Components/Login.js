@@ -1,27 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-let loginuser = async (UserName,Password) => {
-    try {
-      await fetch("https://ubade.pythonanywhere.com/api/login", {
-        method: "POST",
-        body: JSON.stringify({
-          username: UserName,
-          password: Password,
-        }),
-        headers: {
-            "Accept":"application/json",
-            "Content-Type": "application/json",
-        },
-      })
-        .then((respnose) => respnose.json())
-        .then((respnose) => { window.localStorage.setItem("token", respnose["token"])
-                              window.localStorage.setItem("username", respnose["username"])});    // save token to local storage under "token" key
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
 class Login extends React.Component {
     constructor(props){
       super(props);
@@ -29,8 +8,31 @@ class Login extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginuser = this.loginuser.bind(this);
     };
-      
+    
+    loginuser = async (UserName,Password) => {
+      try {
+        await fetch("https://ubade.pythonanywhere.com/api/login", {
+          method: "POST",
+          body: JSON.stringify({
+            username: UserName,
+            password: Password,
+          }),
+          headers: {
+              "Accept":"application/json",
+              "Content-Type": "application/json",
+          },
+        })
+          .then((respnose) => respnose.json())
+          .then((respnose) => { window.localStorage.setItem("token", respnose["token"])
+                                window.localStorage.setItem("username", respnose["username"])});    // save token to local storage under "token" key
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
     handleChange(event) {
         const target = event.target;
         const value =target.value;
@@ -42,7 +44,7 @@ class Login extends React.Component {
       }
 
     handleSubmit(event) {
-        loginuser(this.state.username,this.state.password);
+        this.loginuser(this.state.username,this.state.password);
         event.preventDefault();
         document.getElementById("redirectToHomepage").click()
       }

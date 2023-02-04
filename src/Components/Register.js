@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 let registeruser = async (UserName,Password) => {
     try {
@@ -47,6 +47,7 @@ class Register extends React.Component {
       }
 
     render() {
+      if (window.localStorage.getItem("token")) return <Navigate to="/" replace={true} />
       return(
         <form onSubmit={this.handleSubmit}>
         <label>

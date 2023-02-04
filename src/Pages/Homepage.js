@@ -4,7 +4,7 @@ import Logout from '../Components/Logout';
 function Homepage() {
     return(
         <>
-        <h1>Hello</h1>
+        <h1>Hello{window.localStorage.getItem("username") ? [", ",window.localStorage.getItem("username"),"!"].join(""): [", ","Stranger!"].join("")}</h1>
         <Link to="/register">
             <span>Register</span>
         </Link>

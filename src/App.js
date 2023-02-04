@@ -1,14 +1,15 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 import Homepage from './Pages/Homepage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
-import NotesList from './Pages/NotesListPage';
+import NoteListPage from './Pages/NotesListPage';
 import AddNotePage from './Pages/AddNotePage';
 import ConvertGuestPage from './Pages/ConvertGuestPage';
 import UpdateNotePage from './Pages/UpdateNotePage';
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/notes",
-        element: <NotesList/>,
+        element: <NoteListPage/>,
       },
       {
         path: "/notes/add",
@@ -52,9 +53,11 @@ const router = createBrowserRouter([
 ],{basename: "/react",});
 function App() {
   return (
+    <>
     <div className="App">
     <RouterProvider router={router} />
     </div>
+    </>
   );
 }
 
