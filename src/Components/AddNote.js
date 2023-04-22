@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 let addnote = async (Title,Body) => {
     try {
-      await fetch("https://ubade.pythonanywhere.com/api/notes/add", {
+      await fetch("https://ubade.pythonanywhere.com/api/notes", {
         method: "POST",
         body: JSON.stringify({
           title: Title,

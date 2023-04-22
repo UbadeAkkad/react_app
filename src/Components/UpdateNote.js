@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 let updatenote = async (Id ,Title ,Body, Color) => {
     try {
-      await fetch("https://ubade.pythonanywhere.com/api/notes/update", {
+      await fetch("https://ubade.pythonanywhere.com/api/notes", {
         method: "PUT",
         body: JSON.stringify({
           id: Id,

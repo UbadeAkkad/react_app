@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 let deletenote = async (Id) => {
   try {
-    await fetch("https://ubade.pythonanywhere.com/api/notes/delete", {
+    await fetch("https://ubade.pythonanywhere.com/api/notes", {
       method: "DELETE",
       body: JSON.stringify({
         id: Id,
